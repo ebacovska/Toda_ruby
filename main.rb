@@ -36,24 +36,6 @@ number_of_page = 1
 # file.close
 
 
-# coin = Sprite.new(
-#     'coin.png',
-#     width: 60,
-#     height: 60,
-#     clip_width: 84,
-#     time: 300,
-#     loop: false
-#    )
-
-
-# on :mouse do |event|
-#     # A mouse event occurred
-#     #puts event.x, event.y if event.type == :down
-#     if event.x > 140 && event.x < 215 && event.y > 363 && event.y < 425 && event.type == :down && home_page = 1
-#         cat.play
-#     end
-
-# end
 
 on :mouse do |event|
   if event.type == :down && number_of_page == 5
@@ -102,11 +84,19 @@ end
 
 
 
-# file = File.open("mony.txt")
-# file_data = file.read
-# File.open("mony.txt", "w")
-# File.write("mony.txt", "sum")
-# puts (file_data)
-# file.close
+
+on :mouse do |event|
+  if event.type == :down && number_of_page == 3
+    if event.x > 245 && event.x < 360 && event.y > 305 && event.y < 415
+      number_of_page = 3
+      Image.new("3.png")
+      file = File.open("mony.txt")
+      mony = file.read
+      File.write("mony.txt", mony.to_i + 25)
+      mony_count()
+    end
+  end 
+end
+
 
 show
